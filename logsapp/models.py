@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
 class Details(models.Model):
@@ -8,8 +9,22 @@ class Details(models.Model):
     packs = models.IntegerField(default=0)
     weight = models.IntegerField(default=200)
     location = models.CharField(max_length=10)
+    orderdate = models.DateTimeField(default=datetime.now, blank=True)
+
+    def __str__(self):
+        return self.refid
+
+    class Meta:
+        verbose_name_plural = "Details"
 
 class Login(models.Model):
     username = models.CharField(max_length=10)
     password = models.CharField(max_length=16)
     usertype = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.username
+
+    class Meta:
+        verbose_name_plural = "Login"
+

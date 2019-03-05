@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'register.apps.RegisterConfig',
     'logsapp.apps.LogsappConfig',
     'django.contrib.admin',
     'django.contrib.auth',

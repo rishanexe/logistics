@@ -17,12 +17,15 @@ from django.contrib import admin
 from django.urls import include,path
 from django.contrib.auth import views as auth_views
 from register import views as user_views
+from logsapp import views as logs_view
 
 urlpatterns = [
     path('', include('logsapp.urls'), name='home'),
-    path('index/', include('logsapp.urls')),
+    path('customer/', logs_view.customer, name='customer'),
+    #path('index/', include('logsapp.urls')),
     path('register/', user_views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='register/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='register/logout.html'), name='logout'),
+    path('customer/deliveryform/', logs_view.deliveryform, name='deliveryform'),
     path('admin/', admin.site.urls),
 ]

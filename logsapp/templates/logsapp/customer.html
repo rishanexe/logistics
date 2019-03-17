@@ -1,5 +1,14 @@
 {% extends 'logsapp/layout.html' %}
 
 {% block content %}
-    <p>Test text</p>
+    <br>
+    <div class="col-md-4 text-center">
+        <h3>Welcome <b>{{ user.username }}</b></h3>
+        <br>
+        <h3>Register a delivery</h3>
+        <a class="btn btn-primary" type="button" href="deliveryform">Register a delivery</a>
+        <br><br>
+        <h3>Show all your orders</h3>
+        <a class="btn btn-primary" type="button" href="orders">Show orders</a>
+    </div>
 {% endblock %}

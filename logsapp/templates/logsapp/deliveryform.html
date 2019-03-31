@@ -1,5 +1,28 @@
 {% extends 'logsapp/layout.html' %}
 
 {% block content %}
-    <p>test</p>
+    <br><br>
+    {% if user.is_authenticated %}
+    <div class="col-md-4 text-center">
+        <h3>Register an order:<h3>
+            <h5>This will register your order. For pickup facility, you need you head to office for verification, if not done before.</h5>
+            <br>
+
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    {{ form.as_p }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Register</button>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-outline-info"
+                        style="border-color:red;color:red;" href="{% url 'customer' %}">Cancel</a>
+                </div>
+            </form>
+    </div>
+    {% else %}
+        <h3>Login to view this page: <a href="{% url 'login' %}">LOGIN</a></h3>
+    {% endif %}
 {% endblock %}

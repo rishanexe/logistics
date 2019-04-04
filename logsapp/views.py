@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Details
-from .forms import DeliveryForm
+from .forms import DeliveryForm, StatusForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -31,7 +31,16 @@ def deliveryform(request):
 def orders(request):
    orders = Details.objects.filter(your_name=request.user)
    arg = {'ord': orders}
-   return render(request, 'logsapp/orders.html', arg)
+   if request.method == 'POST':
+      status_form = StatusForm(request.POST)
+      '''if status_form.is_valid():
+         statusform = status_form.save(commit=False)
+         statusform.save()'''
+      return redirect('orders')
+   else:
+      status_form = StatusForm()
+
+   return render(request, 'logsapp/orders.html', arg,{'form': status_form})
 
 def delivery(request):
    delivery = Details.objects.all()

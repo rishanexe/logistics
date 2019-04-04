@@ -27,13 +27,14 @@
       <th scope="col">#</th>
       <!---<th scope="col">Name</th> -->
       <th scope="col">Reciever Name</th>
-      <th scope="col">Good Name</th>
-      <th scope="col">Good Type</th>
+      <th scope="col">Package Name</th>
+      <th scope="col">Package Type</th>
       <th scope="col">Quantity</th>
       <th scope="col">Weight</th>
       <th scope="col">Address</th>
       <th scope="col">City</th>
       <th scope="col">Order Date</th>
+      <th scope="col">Delivered</th>
     </tr>
   </thead>
   <tbody>
@@ -41,15 +42,43 @@
             <tr>
                 <th scope="row">{{ord.id}}</th>
                 <td>{{ord.to_name}}</td>
-                <td>{{ord.good_name}}</td>
-                <td>{{ord.good_type}}</td>
+                <td>{{ord.package_name}}</td>
+                <td>{{ord.package_type}}</td>
                 <td>{{ord.quantity}}</td>
                 <td>{{ord.weight}}</td>                
                 <td>{{ord.address}}</td>                
                 <td>{{ord.city}}</td>                
                 <td>{{ord.orderdate}}</td>
+                {% if ord.delivered %}
+                  <td>Yes</td>
+                {% else %}
+                  <td>No</td>
+                {% endif %}
             </tr>     
     {% endfor %}  
 </tbody>
 </table>
+
+<div class="container">
+  <h5>Delivered Option</h5>
+  <p>Select user:</p>
+  <form>
+    <div class="form-group">
+      <label for="sel1">Select list (select one):</label>
+      <select class="form-control" id="sel1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+      </select>
+    </div>
+    {% csrf_token %}
+      <fieldset class="form-group">
+        {{ form.as_p }}
+      </fieldset>
+      <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Confirm</button>
+      </div>
+  </form>
+</div>
 {% endblock content %}

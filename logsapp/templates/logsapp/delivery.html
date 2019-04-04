@@ -59,4 +59,24 @@
     {% endfor %}  
 </tbody>
 </table>
+
+<h5>Delivered Option</h5>
+  <p>Select order ID:</p>
+  <form method = "post" action = "{% url 'delivery' %}">
+    {% csrf_token %}
+
+    <select name = "dropid" >
+    {% for ord in ord %}
+      <option value="{{ord.id}}">{{ord.id}}</option>
+    {% endfor %}
+    </select>
+  <p>Delivered ?</p>
+    <select name = "dropstatus" >
+      <option value="True">Yes</option>
+      <option value="False">No</option>
+    </select>
+
+    <br><br>
+<input  type = "submit" value="Confirm">
+</form>
 {% endblock content %}

@@ -59,26 +59,4 @@
 </tbody>
 </table>
 
-<div class="container">
-  <h5>Delivered Option</h5>
-  <p>Select user:</p>
-  <form>
-    <div class="form-group">
-      <label for="sel1">Select list (select one):</label>
-      <select class="form-control" id="sel1">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-      </select>
-    </div>
-    {% csrf_token %}
-      <fieldset class="form-group">
-        {{ form.as_p }}
-      </fieldset>
-      <div class="form-group">
-        <button class="btn btn-outline-info" type="submit">Confirm</button>
-      </div>
-  </form>
-</div>
 {% endblock content %}

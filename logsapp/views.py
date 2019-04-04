@@ -31,18 +31,21 @@ def deliveryform(request):
 def orders(request):
    orders = Details.objects.filter(your_name=request.user)
    arg = {'ord': orders}
-   if request.method == 'POST':
-      status_form = StatusForm(request.POST)
-      '''if status_form.is_valid():
-         statusform = status_form.save(commit=False)
-         statusform.save()'''
-      return redirect('orders')
-   else:
-      status_form = StatusForm()
-
-   return render(request, 'logsapp/orders.html', arg,{'form': status_form})
+   return render(request, 'logsapp/orders.html', arg)
 
 def delivery(request):
    delivery = Details.objects.all()
    arg = {'ord': delivery}
+   if request.method == "POST":
+      a = request.POST['dropid']
+      b = request.POST['dropstatus']
+      obj = Details.objects.get(id=a)
+      if b:
+         obj.delivered = True
+      else:
+         obj.delivered = False
+      obj.save()
+   else:
+      context_dict = {}
+   #return render(request, 'demo/dashboard.html', context_dict)
    return render(request, 'logsapp/delivery.html', arg)

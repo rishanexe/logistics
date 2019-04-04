@@ -51,9 +51,9 @@
                 <td>{{ord.city}}</td>                
                 <td>{{ord.orderdate}}</td>
                 {% if ord.delivered %}
-                  <td>Yes</td>
+                  <td style="color: green;">Yes</td>
                 {% else %}
-                  <td>No</td>
+                  <td style="color: red;">No</td>
                 {% endif %}
             </tr>     
     {% endfor %}  

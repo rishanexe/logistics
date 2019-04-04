@@ -40,7 +40,7 @@ def delivery(request):
       a = request.POST['dropid']
       b = request.POST['dropstatus']
       obj = Details.objects.get(id=a)
-      if b:
+      if b==True:
          obj.delivered = True
       else:
          obj.delivered = False
